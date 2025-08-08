@@ -54,6 +54,10 @@ def obtener_estado_spain():
 
     # El estado está en la siguiente columna
     estado = fila_spain.find_next("td").get_text(strip=True)
+
+    # Normalizar: minúsculas y quitar asteriscos
+    estado = estado.lower().replace("*", "")
+
     return estado
 
 # ===========================
@@ -66,9 +70,8 @@ while True:
     try:
         estado_actual = obtener_estado_spain()
         print(f"📌 Estado actual Spain: {estado_actual}")
-
         
-        if estado_actual == "OPEN" and estado_anterior != "OPEN":
+        if estado_actual == "open" and estado_anterior != "open":
             enviar_alerta("🚨 ¡ATENCIÓN! La visa para Spain está ABIERTA 🚀", repeticiones=REPETICIONES_ALERTA, pausa=3)
         
         estado_anterior = estado_actual
@@ -76,6 +79,3 @@ while True:
         print("❌ Error general:", e)
     
     time.sleep(INTERVALO)
-
-
-
