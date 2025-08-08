@@ -66,9 +66,6 @@ while True:
     try:
         estado_actual = obtener_estado_spain()
         print(f"📌 Estado actual Spain: {estado_actual}")
-        # 🚨 PRUEBA FORZADA
-        estado_actual = "OPEN"
-        estado_anterior = "PAUSED"
 
         
         if estado_actual == "OPEN" and estado_anterior != "OPEN":
@@ -79,5 +76,6 @@ while True:
         print("❌ Error general:", e)
     
     time.sleep(INTERVALO)
+
 
 
