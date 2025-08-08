@@ -1,3 +1,4 @@
+import os
 import requests
 from bs4 import BeautifulSoup
 import time
@@ -9,8 +10,8 @@ import time
 URL = "https://immi.homeaffairs.gov.au/what-we-do/whm-program/status-of-country-caps"
 
 # Tu bot de Telegram
-TELEGRAM_BOT_TOKEN = "8439216416:AAHdRQt9nEZ3s6Bc8Ahff-GviHSdTLJBPqU"
-TELEGRAM_CHAT_ID = "6165325367"
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 # Intervalo de comprobación en segundos
 INTERVALO = 60  # 1 minuto
@@ -74,3 +75,4 @@ while True:
         print("❌ Error general:", e)
     
     time.sleep(INTERVALO)
+
